@@ -10,7 +10,7 @@ import Image from "next/image";
 const SocialIcons = () => {
     return (
         <Stack position={'fixed'} bottom={0} bgcolor={'primary.main'} width={'100%'}
-               justifyContent={'center'} height={'6rem'} alignItems={'center'}>
+               justifyContent={'center'} height={'3rem'} alignItems={'center'}>
             <Stack gap={'.5rem'} direction={'row'}>
                 <Link href={'https://www.facebook.com/BodegaLaFontana'} target={'_blank'}>
                     <IconButton sx={{color: 'rgb(8, 102, 255)'}}>
