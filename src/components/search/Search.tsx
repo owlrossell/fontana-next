@@ -69,6 +69,9 @@ const Search = () => {
             setSearchItem && setSearchItem(parsedObject);
             router.push(`/categoria/${stringToUrl(parsedObject.name)}`);
         }
+        if (parsedObject.type === 'product') {
+            setSearchItem && setSearchItem(parsedObject);
+        }
     }
 
     return (

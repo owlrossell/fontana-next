@@ -43,6 +43,10 @@ const ProductView = () => {
             }
             middleProducts = products?.filter((product: ProductLocal) => product.category.id === searchItem.id);
         }
+        if(searchItem && searchItem.type === 'product'){
+            setPageNumber(1);
+            middleProducts = products?.filter((product: ProductLocal) => product.id === searchItem.id);
+        }
         setCountProducts(middleProducts?.length || 0)
         setProductsToShow(middleProducts?.slice((pageNumber - 1) * limit, pageNumber * limit) || []);
 
