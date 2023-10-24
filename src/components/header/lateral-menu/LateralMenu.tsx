@@ -15,7 +15,7 @@ import logo from '@/../public/shops.png';
 import {Close, LocalOffer} from "@mui/icons-material";
 import Link from "next/link";
 import {LateralMenuItem} from "@/components/header/lateral-menu/LateralMenuItem";
-import {useFilterContext} from "@/global/FilterProvider";
+import {useSearchContext} from "@/components/search/SearchProvider";
 
 interface LateralMenuProps {
     isActive: boolean,
@@ -24,10 +24,10 @@ interface LateralMenuProps {
 }
 
 const LateralMenu = ({isActive, toggleMenu, lateralMenuItems}: LateralMenuProps) => {
-    const {setFilter} = useFilterContext();
+    const {setSearchItem} = useSearchContext();
     const handleClick = (item:LateralMenuItem) => {
         toggleMenu();
-        setFilter && setFilter({
+        setSearchItem && setSearchItem({
             id: item.id,
             name: item.name,
             type: 'category',

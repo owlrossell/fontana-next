@@ -1,16 +1,14 @@
 'use client';
 import {Box, Container} from "@mui/material";
 import Search from "@/components/search";
-import {useFilterContext} from "@/global/FilterProvider";
-import FilterProducts from "@/components/filter-products";
+import {useSearchContext} from "@/components/search/SearchProvider";
+import FilterProducts from "../../../components/search/filter-products";
 
 const Page = ({params}: { params: { name: string } }) => {
-    const {filter} = useFilterContext();
+    const {searchItem} = useSearchContext();
     return (
         <Box>
-            <Container maxWidth={'sm'}>
-                <FilterProducts/>
-            </Container>
+            CATEGORIA
         </Box>
     )
 }

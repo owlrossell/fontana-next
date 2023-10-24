@@ -9,7 +9,7 @@ export interface ProductLocal {
     salePrice: number;
     isPromotional: boolean;
     category: CategoryApi;
-    photos?: {
+    photos: {
         id: number;
         created: string;
         type: boolean;
@@ -38,7 +38,7 @@ export interface ProductApi {
     state: string;
     isPromotional: boolean;
     category: CategoryApi;
-    photos?: {
+    photos: {
         id: number;
         created: string;
         type: boolean;

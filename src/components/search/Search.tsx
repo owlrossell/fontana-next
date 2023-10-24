@@ -1,12 +1,13 @@
 'use client';
 import {Box, Container, InputAdornment, List, ListItemButton, ListItemText, TextField} from "@mui/material";
-import {LocalOffer, SearchRounded} from "@mui/icons-material";
+import {Filter, LocalOffer, SearchRounded} from "@mui/icons-material";
 import React, {ChangeEventHandler, useEffect, useState} from "react";
 import Fuse from "fuse.js";
 import {useDataContext} from "@/global/DataProvider";
-import {useFilterContext} from "@/global/FilterProvider";
+import {SearchItem, useSearchContext} from "@/components/search/SearchProvider";
 import {useRouter} from "next/navigation";
 import {stringToUrl} from "@/utils/stringManager";
+import FilterProducts from "@/components/search/filter-products";
 
 const fuseOptions = {
     includeScore: true,
@@ -17,24 +18,24 @@ const fuseOptions = {
 const Search = () => {
     const router = useRouter();
     const {categories, products} = useDataContext();
-    const {filter, setFilter} = useFilterContext();
+    const {searchItem, setSearchItem} = useSearchContext();
 
-    const [suggestions, setSuggestions] = useState<SearchSuggest[]>([]);
+    const [suggestions, setSuggestions] = useState<SearchItem[]>([]);
 
     const [inputText, setInputText] = useState('');
-    const [suggestedItems, setSuggestedItems] = useState<SearchSuggest[]>([]);
+    const [suggestedItems, setSuggestedItems] = useState<SearchItem[]>([]);
 
     const fuse = new Fuse(suggestions, fuseOptions);
 
     useEffect(() => {
         if (categories && products) {
             setSuggestions([
-                ...categories.map((category): SearchSuggest => ({
+                ...categories.map((category): SearchItem => ({
                     id: category.id,
                     name: category.name,
                     type: 'category'
                 })),
-                ...products.map((product): SearchSuggest => ({
+                ...products.map((product): SearchItem => ({
                     id: product.id,
                     name: product.name,
                     type: 'product'
@@ -44,12 +45,12 @@ const Search = () => {
     }, [products, categories]);
 
     useEffect(() => {
-        if (filter) {
-            setInputText(filter.name);
+        if (searchItem) {
+            setInputText(searchItem.name);
         } else {
             setInputText('');
         }
-    }, [filter]);
+    }, [searchItem]);
 
     const handleInputChange: ChangeEventHandler = ({target}) => {
         if (target instanceof HTMLInputElement) {
@@ -59,13 +60,13 @@ const Search = () => {
         }
     }
 
-    const handleClickedItem = (event: React.MouseEvent<HTMLDivElement>, suggestion: SearchSuggest) => {
+    const handleClickedItem = (event: React.MouseEvent<HTMLDivElement>, suggestion: SearchItem) => {
         setInputText(suggestion.name || '')
         setSuggestedItems([]);
         const storedObject = event.currentTarget.getAttribute('data-object');
-        const parsedObject: SearchSuggest = JSON.parse(storedObject || '');
+        const parsedObject: SearchItem = JSON.parse(storedObject || '');
         if (parsedObject.type === 'category') {
-            setFilter && setFilter(parsedObject);
+            setSearchItem && setSearchItem(parsedObject);
             router.push(`/categoria/${stringToUrl(parsedObject.name)}`);
         }
     }
@@ -146,6 +147,11 @@ const Search = () => {
                     </List>
                 )}
             </Box>
+            {searchItem && (
+                <Box marginTop={'1rem'}>
+                    <FilterProducts/>
+                </Box>
+            )}
         </Container>
     )
 }
