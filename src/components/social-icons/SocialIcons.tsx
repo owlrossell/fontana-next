@@ -9,7 +9,7 @@ import Image from "next/image";
 
 const SocialIcons = () => {
     return (
-        <Stack position={'fixed'} bottom={0}  bgcolor={'primary.main'} width={'100%'}
+        <Stack position={'fixed'} bottom={0} bgcolor={'primary.main'} width={'100%'}
                justifyContent={'center'} height={'6rem'} alignItems={'center'}>
             <Stack gap={'.5rem'} direction={'row'}>
                 <Link href={'https://www.facebook.com/BodegaLaFontana'} target={'_blank'}>
@@ -32,12 +32,12 @@ const SocialIcons = () => {
                         <LocalPhone sx={{fontSize: '2rem'}}/>
                     </IconButton>
                 </Link>
-            </Stack>
-            <Box>
                 <Link href={'https://www.consumidor.gob.pe/libro-de-reclamaciones'} target={'_blank'}>
-                    <Image src={reclamacionesImage} alt={'Libro de reclamaciones'} height={32}/>
+                    <IconButton>
+                        <Image src={reclamacionesImage} alt={'Libro de reclamaciones'} height={32}/>
+                    </IconButton>
                 </Link>
-            </Box>
+            </Stack>
         </Stack>
     );
 }
