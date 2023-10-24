@@ -27,7 +27,6 @@ const DataProvider = ({children}: any) => {
         getAllProducts().then((products) => {
             setProducts(products);
         });
-        console.log('cargando datos')
     }, []);
     return (
         <DataContext.Provider value={{categories, products}}>

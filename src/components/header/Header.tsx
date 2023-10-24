@@ -14,10 +14,11 @@ import LateralMenu from "@/components/header/lateral-menu";
 import {LateralMenuItem} from "@/components/header/lateral-menu/LateralMenuItem";
 import {stringToUrl} from "@/utils/stringManager";
 import {useCartContext} from "@/components/cart/CartProvider";
+import Cart from "@/components/cart";
 
 const Header: FunctionComponent = () => {
     const {categories} = useDataContext();
-    const {selectedProducts} = useCartContext();
+    const {selectedProducts, setIsOpen} = useCartContext();
 
     const lateralMenuItems: LateralMenuItem[] = categories?.map((category): LateralMenuItem => ({
         id: category.id,
@@ -91,7 +92,7 @@ const Header: FunctionComponent = () => {
                                 <Image src={logo} alt={'logo'}/>
                             </Stack>
                         </Link>
-                        <IconButton>
+                        <IconButton onClick={()=>setIsOpen && setIsOpen(true)}>
                             {selectedProducts && selectedProducts?.length > 0 ? (
                                 <Badge badgeContent={selectedProducts.length} color={'red'}>
                                     <ShoppingCart/>
@@ -163,6 +164,7 @@ const Header: FunctionComponent = () => {
                 toggleMenu={toggleMenu}
                 lateralMenuItems={lateralMenuItems}
             />
+            <Cart/>
         </>
     );
 };

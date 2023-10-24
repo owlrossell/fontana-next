@@ -3,7 +3,7 @@ import {AddCircle, RemoveCircle} from "@mui/icons-material";
 import {useCartContext} from "@/components/cart/CartProvider";
 
 const Quantity = ({productId}: { productId: number }) => {
-    const {selectedProducts, quantityArray, setQuantityArray} = useCartContext();
+    const {selectedProducts, setSelectedProducts, quantityArray, setQuantityArray} = useCartContext();
 
     const currentIndex = selectedProducts?.findIndex((product) => product.id === productId) || 0;
     const onPlusQuantity = () => {
@@ -19,11 +19,22 @@ const Quantity = ({productId}: { productId: number }) => {
             const newArray = quantityArray ? [...quantityArray] : [];
             newArray[currentIndex]--;
             setQuantityArray && setQuantityArray(newArray);
+        } else {
+            setQuantityArray && setQuantityArray((prevArray) => {
+                const newArray = [...prevArray];
+                newArray.splice(currentIndex, 1);
+                return newArray;
+            });
+            setSelectedProducts && setSelectedProducts((prevArray) => {
+                const newArray = [...prevArray];
+                newArray.splice(currentIndex, 1);
+                return newArray;
+            });
         }
     }
 
     return (
-        <Stack direction={'row'} alignItems={'center'} width={'100%'} justifyContent={'center'}>
+        <Stack direction={'row'} alignItems={'center'} width={'100%'}>
             <IconButton color={'graySpace'} onClick={onMinusQuantity}
                 // sx={{opacity: quantity === 1 ? '0%' : '100%'}}
             >

@@ -1,0 +1,50 @@
+/*Bootstrap personalization*/
+.carousel-control-prev, .carousel-control-next {
+    background-color: #E69900;
+    width: 2rem;
+    height: 2rem;
+    opacity: 1;
+    border-radius: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    top: 50%;
+    transform: translateY(-50%);
+}
+.carousel-control-prev > *, .carousel-control-next > * {
+    width: 60%;
+}
+.carousel-control-prev {
+    left: 1rem;
+}
+.carousel-control-next {
+    right: 1rem;
+}
+.carousel-indicators {
+    height: 2rem;
+    display: flex;
+    gap: .5rem;
+    align-items: center;
+    margin: 0;
+    bottom: -2rem;
+}
+.carousel-indicators [data-bs-target] {
+    width: 1rem;
+    height: 1rem;
+    border-radius: 50%;
+    background-color: #C5BFB5;
+    opacity: 1;
+    transition: background-color .2s ease-in-out;
+}
+.carousel-indicators [data-bs-target].active {
+    background-color: #E69900;
+}
+.carousel {
+    margin-bottom: 2rem;
+}
+.carousel-caption {
+    bottom: 0;
+    padding: 1rem 0;
+}

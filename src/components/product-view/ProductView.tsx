@@ -1,10 +1,11 @@
 'use client';
-import {Container, Grid, Pagination, Typography} from "@mui/material";
+import {Container, Grid, Pagination, Typography, useMediaQuery} from "@mui/material";
 import ProductItem from "@/components/product-view/product-item";
 import {useDataContext} from "@/global/DataProvider";
 import {ProductLocal} from "@/api/models/product";
 import {useEffect, useState} from "react";
 import {useSearchContext} from "@/components/search/SearchProvider";
+import theme from "@/theme/theme";
 
 const ProductView = () => {
     const {products} = useDataContext();
@@ -17,9 +18,21 @@ const ProductView = () => {
 
     const [isFirstRender, setIsFirstRender] = useState(true);
 
-    // useEffect(() => {
-    //     setCountProducts(products?.length || 0);
-    // }, [products]);
+    const isLgUp = useMediaQuery(theme.breakpoints.up('lg'));
+    const isMdUp = useMediaQuery(theme.breakpoints.up('md'));
+    const isSmUp = useMediaQuery(theme.breakpoints.up('sm'));
+    const isSmDown = useMediaQuery(theme.breakpoints.down('sm'));
+    useEffect(() => {
+        if (isLgUp)
+            setLimit(20);
+        else if (isMdUp)
+            setLimit(15)
+        else if (isSmUp)
+            setLimit(12)
+        else if (isSmDown)
+            setLimit(10)
+        setPageNumber(1);
+    }, [isLgUp, isMdUp, isSmUp, isSmDown]);
 
     useEffect(() => {
         let middleProducts = products;

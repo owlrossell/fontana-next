@@ -36,7 +36,7 @@ export interface ProductApi {
     }[];
     tax: number;
     state: string;
-    isPromotional: boolean;
+    isPromocional: boolean;
     category: CategoryApi;
     photos: {
         id: number;
@@ -59,7 +59,7 @@ export const toProductLocal = (productApi: ProductApi): ProductLocal => ({
     stock: productApi.stock,
     regularPrice: productApi.regularPrice,
     salePrice: productApi.salePrice,
-    isPromotional: productApi.isPromotional,
+    isPromotional: productApi.isPromocional,
     category: productApi.category,
     photos: productApi.photos,
 });

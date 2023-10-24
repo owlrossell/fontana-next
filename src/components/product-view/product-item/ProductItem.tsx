@@ -1,5 +1,5 @@
 'use client';
-import {Box, Button, Card, CardActions, CardContent, Typography} from "@mui/material";
+import {Box, Button, Card, CardActions, CardContent, Stack, Typography} from "@mui/material";
 import Image from "next/image";
 import {ProductLocal} from "@/api/models/product";
 import React, {useEffect, useState} from "react";
@@ -73,7 +73,7 @@ const ProductItem = ({product}: ProductItemProps) => {
                         S/ {(salePrice ? salePrice : regularPrice).toFixed(2)}
                     </Typography>
 
-                    {salePrice && (
+                    {salePrice !== regularPrice && (
                         <Typography
                             variant={'h6'}
                             component={'p'}
@@ -111,7 +111,9 @@ const ProductItem = ({product}: ProductItemProps) => {
                         {isAdded ? 'Añadido' : 'Agregar'}
                     </Button>
                 ) : (
-                    <Quantity productId={id}/>
+                    <Box margin={'0 auto'}>
+                        <Quantity productId={id}/>
+                    </Box>
                 )}
             </CardActions>
         </Card>

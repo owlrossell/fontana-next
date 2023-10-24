@@ -3,6 +3,8 @@ import {createContext, useContext, useEffect, useState} from "react";
 import {ProductLocal} from "@/api/models/product";
 
 interface CartContextProps {
+    isOpen?: boolean;
+    setIsOpen?: React.Dispatch<React.SetStateAction<boolean>>;
     selectedProducts?: ProductLocal[];
     setSelectedProducts?: React.Dispatch<React.SetStateAction<ProductLocal[]>>;
     quantityArray?: number[];
@@ -17,13 +19,18 @@ export const useCartContext = () => {
 const CartProvider = ({children}: {children: React.ReactNode}) => {
     const [quantityArray, setQuantityArray] = useState<number[]>([]);
     const [selectedProducts, setSelectedProducts] = useState<ProductLocal[]>([]);
-    useEffect(() => {
-        console.log(quantityArray);
-        console.log(selectedProducts);
-    }, [quantityArray, selectedProducts]);
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <CartContext.Provider value={{selectedProducts, setSelectedProducts, quantityArray, setQuantityArray}}>
+        <CartContext.Provider value={{
+            selectedProducts,
+            setSelectedProducts,
+            quantityArray,
+            setQuantityArray,
+            isOpen,
+            setIsOpen,
+
+        }}>
             {children}
         </CartContext.Provider>
     )
