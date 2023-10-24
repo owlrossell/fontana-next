@@ -1,7 +1,7 @@
 'use client';
 
 import React, {FunctionComponent, useState} from "react";
-import {AppBar, Container, IconButton, Stack} from "@mui/material";
+import {AppBar, Badge, Container, IconButton, Stack} from "@mui/material";
 
 import {Menu, ShoppingCart} from '@mui/icons-material';
 import Image from "next/image";
@@ -13,9 +13,11 @@ import {useDataContext} from "@/global/DataProvider";
 import LateralMenu from "@/components/header/lateral-menu";
 import {LateralMenuItem} from "@/components/header/lateral-menu/LateralMenuItem";
 import {stringToUrl} from "@/utils/stringManager";
+import {useCartContext} from "@/components/cart/CartProvider";
 
 const Header: FunctionComponent = () => {
     const {categories} = useDataContext();
+    const {selectedProducts} = useCartContext();
 
     const lateralMenuItems: LateralMenuItem[] = categories?.map((category): LateralMenuItem => ({
         id: category.id,
@@ -90,7 +92,13 @@ const Header: FunctionComponent = () => {
                             </Stack>
                         </Link>
                         <IconButton>
-                            <ShoppingCart/>
+                            {selectedProducts && selectedProducts?.length > 0 ? (
+                                <Badge badgeContent={selectedProducts.length} color={'red'}>
+                                    <ShoppingCart/>
+                                </Badge>
+                            ) : (
+                                <ShoppingCart/>
+                            )}
                         </IconButton>
                     </Stack>
                 </Container>

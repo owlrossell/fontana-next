@@ -48,6 +48,12 @@ declare module '@mui/material/IconButton' {
     }
 }
 
+declare module '@mui/material/Badge' {
+    interface BadgePropsColorOverrides {
+        red: true;
+    }
+}
+
 const redBase = '#C25357';
 const greenBase = '#76c893';
 const orangeBase = '#E69900';
