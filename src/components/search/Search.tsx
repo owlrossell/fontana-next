@@ -52,11 +52,19 @@ const Search = () => {
         }
     }, [searchItem]);
 
+    useEffect(() => {
+        if(inputText.trim().length === 0 ){
+            setSearchItem && setSearchItem(null);
+        }
+    }, [inputText]);
+
     const handleInputChange: ChangeEventHandler = ({target}) => {
         if (target instanceof HTMLInputElement) {
             setInputText(target.value);
             const closestMatches = fuse.search(target.value).map((result) => result.item).slice(0, 5);
             setSuggestedItems(closestMatches);
+            console.log(inputText)
+
         }
     }
 
