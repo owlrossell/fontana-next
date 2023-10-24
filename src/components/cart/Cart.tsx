@@ -121,7 +121,7 @@ const Cart = () => {
                                         <Stack direction={'row'} gap={'1rem'}>
                                             <Stack position={'relative'} width={'6rem'} height={'6rem'}>
                                                 <Image
-                                                    src={product.photos[0].formatsPhotos.find((photo) => photo.width === 300)?.src || 'https://metroio.vtexassets.com/arquivos/ids/292318-1200-auto?v=638179318428870000&width=1200&height=auto&aspect=true'}
+                                                    src={product.photos[0]?.formatsPhotos.find((photo) => photo.width === 300)?.src || 'https://metroio.vtexassets.com/arquivos/ids/292318-1200-auto?v=638179318428870000&width=1200&height=auto&aspect=true'}
                                                     alt={'product'} fill/>
                                             </Stack>
                                             <Stack direction={'column'} gap={'.5rem'} flex={1}>
