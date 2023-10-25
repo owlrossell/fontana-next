@@ -20,7 +20,7 @@ const Cart = () => {
         setQuantityArray,
     } = useCartContext();
 
-    const phoneNumber = '51904335495';
+    const phoneNumber = '51935797813';
     const [totalPrice, setTotalPrice] = useState<number>(0);
     const [url, setUrl] = useState('');
 

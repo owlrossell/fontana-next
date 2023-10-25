@@ -27,7 +27,7 @@ const SocialIcons = () => {
                         <Image src={tiktokImage} alt={'twitter'}/>
                     </IconButton>
                 </Link>
-                <Link href={'tel:+51904335495'} target={'_blank'}>
+                <Link href={'tel:+51935797813'} target={'_blank'}>
                     <IconButton>
                         <LocalPhone sx={{fontSize: '2rem'}}/>
                     </IconButton>
