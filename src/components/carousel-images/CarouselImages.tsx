@@ -74,7 +74,7 @@ const CarouselImages = () => {
 
     return (
         <Container sx={{position: 'relative'}}>
-            <Carousel fade onSelect={onSelect}>
+            <Carousel onSelect={onSelect}>
                 {promotionalProducts.map((product) => {
                     const smallImage = product.photos[0]?.formatsPhotos.find(photo => photo.width === 600)?.src
                         || 'https://metroio.vtexassets.com/assets/vtex.file-manager-graphql/images/7270fca8-2a54-419a-b9f8-0259f75746cc___08043e30f3bb494ffb928227ff85e682.jpg';
