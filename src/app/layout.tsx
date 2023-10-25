@@ -33,7 +33,7 @@ export default function RootLayout({children}: { children: React.ReactNode }) {
                 <SearchProvider>
                     <CartProvider>
                         <Header/>
-                        <Box paddingTop={'4rem'} paddingBottom={'3rem'}>
+                        <Box paddingTop={'4rem'} paddingBottom={'8rem'}>
                             <CarouselImages/>
                             <Search/>
                             <ProductView/>
