@@ -1,7 +1,7 @@
 import {
-    AppBar,
+    AppBar, Box, Button,
     Container,
-    Drawer,
+    Drawer, Grid,
     IconButton,
     List,
     ListItem,
@@ -25,7 +25,7 @@ interface LateralMenuProps {
 
 const LateralMenu = ({isActive, toggleMenu, lateralMenuItems}: LateralMenuProps) => {
     const {setSearchItem} = useSearchContext();
-    const handleClick = (item:LateralMenuItem) => {
+    const handleClick = (item: LateralMenuItem) => {
         toggleMenu();
         setSearchItem && setSearchItem({
             id: item.id,
@@ -58,25 +58,53 @@ const LateralMenu = ({isActive, toggleMenu, lateralMenuItems}: LateralMenuProps)
                     </Stack>
                 </Container>
             </AppBar>
-            <List sx={{
-                '> a': {
+            <Container sx={{
+                marginTop: '1rem',
+                '& a': {
                     textDecoration: 'none',
                     color: 'inherit',
+                    display: 'inline-block',
                 }
-            }}>
-                {lateralMenuItems.map((item) => (
-                    <Link href={item.url} key={item.id}>
-                        <ListItem disablePadding>
-                            <ListItemButton onClick={()=>handleClick(item)}>
-                                <ListItemIcon>
-                                    <LocalOffer/>
-                                </ListItemIcon>
-                                <ListItemText primary={item.name}/>
-                            </ListItemButton>
-                        </ListItem>
-                    </Link>
-                ))}
-            </List>
+            }} maxWidth={'sm'}>
+                <Grid container justifyItems={'center'}>
+                    {lateralMenuItems.map((item) => (
+                        <Grid key={item.id} xs={4} sm={3} textAlign={'center'}>
+                            <Link href={item.url} onClick={()=>handleClick(item)}>
+                                <IconButton>
+                                    <Image
+                                        src={'https://s3.amazonaws.com/orion-eat-app-files/buckets-prod%2FKP7AT2edxysP7oHxS-tambo-comidas.svg'}
+                                        alt={'categoria'}
+                                        width={48}
+                                        height={48}
+                                    />
+                                </IconButton>
+                                <Typography variant={'h6'} component={'p'}>{item.name}</Typography>
+                            </Link>
+                        </Grid>
+                    ))}
+                </Grid>
+            </Container>
+            {/*Vista de Lista*/}
+            {/*<List sx={{*/}
+            {/*    '> a': {*/}
+            {/*        textDecoration: 'none',*/}
+            {/*        color: 'inherit',*/}
+            {/*    }*/}
+            {/*}}>*/}
+            {/*    {lateralMenuItems.map((item) => (*/}
+            {/*        <Link href={item.url} key={item.id}>*/}
+
+            {/*            <ListItem disablePadding>*/}
+            {/*                <ListItemButton onClick={() => handleClick(item)}>*/}
+            {/*                    <ListItemIcon>*/}
+            {/*                        <LocalOffer/>*/}
+            {/*                    </ListItemIcon>*/}
+            {/*                    <ListItemText primary={item.name}/>*/}
+            {/*                </ListItemButton>*/}
+            {/*            </ListItem>*/}
+            {/*        </Link>*/}
+            {/*    ))}*/}
+            {/*</List>*/}
         </Drawer>
     )
 }
