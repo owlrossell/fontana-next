@@ -23,10 +23,11 @@ const Header: FunctionComponent = () => {
     const lateralMenuItems: LateralMenuItem[] = categories?.map((category): LateralMenuItem => ({
         id: category.id,
         name: category.name,
-        url: `/categoria/${stringToUrl(category.name)}`
+        url: `/categoria/${stringToUrl(category.name)}`,
+        icon : category.icon,
     })) || [];
 
-    const phoneNumber = '51904335495';
+    // const phoneNumber = '51904335495';
     const [isMenuActive, setIsMenuActive] = useState(false);
     // const [categories, setCategories] = useState([]);
 
@@ -39,7 +40,7 @@ const Header: FunctionComponent = () => {
     //     setSearchItem,
     //     setFilter
     // } = useContext(CartContext);
-    const [url, setUrl] = useState('');
+    // const [url, setUrl] = useState('');
 
     const toggleMenu = () => {
         setIsMenuActive((prevState) => !prevState);
@@ -49,13 +50,13 @@ const Header: FunctionComponent = () => {
     //     setIsCartOpen && setIsCartOpen((prevState) => !prevState);
     // }
 
-    const onHandleMenuItem = (event: React.MouseEvent<HTMLDivElement>) => {
-        const storedObject = event.currentTarget.getAttribute('data-object');
-        const parsedObject = JSON.parse(storedObject || '');
-        // setSearchItem && setSearchItem({id: parsedObject.id, name: parsedObject.name, type: 'category'});
-        // setFilter && setFilter(parsedObject.name);
-        toggleMenu();
-    }
+    // const onHandleMenuItem = (event: React.MouseEvent<HTMLDivElement>) => {
+    //     const storedObject = event.currentTarget.getAttribute('data-object');
+    //     const parsedObject = JSON.parse(storedObject || '');
+    //     // setSearchItem && setSearchItem({id: parsedObject.id, name: parsedObject.name, type: 'category'});
+    //     // setFilter && setFilter(parsedObject.name);
+    //     toggleMenu();
+    // }
 
     // useEffect(() => {
     //     let messageString = 'Hola, buen día quisiera ordenar:'

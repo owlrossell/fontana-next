@@ -1,18 +1,8 @@
-import {
-    AppBar, Box, Button,
-    Container,
-    Drawer, Grid,
-    IconButton,
-    List,
-    ListItem,
-    ListItemButton, ListItemIcon, ListItemText,
-    Stack,
-    Typography
-} from "@mui/material";
+import {AppBar, Container, Drawer, Grid, IconButton, Stack, Typography} from "@mui/material";
 import Image from "next/image";
 
 import logo from '@/../public/shops.png';
-import {Close, LocalOffer} from "@mui/icons-material";
+import {Close} from "@mui/icons-material";
 import Link from "next/link";
 import {LateralMenuItem} from "@/components/header/lateral-menu/LateralMenuItem";
 import {useSearchContext} from "@/components/search/SearchProvider";
@@ -72,7 +62,7 @@ const LateralMenu = ({isActive, toggleMenu, lateralMenuItems}: LateralMenuProps)
                             <Link href={item.url} onClick={()=>handleClick(item)}>
                                 <IconButton>
                                     <Image
-                                        src={'https://s3.amazonaws.com/orion-eat-app-files/buckets-prod%2FKP7AT2edxysP7oHxS-tambo-comidas.svg'}
+                                        src={item.icon || 'https://s3.amazonaws.com/orion-eat-app-files/buckets-prod%2FKP7AT2edxysP7oHxS-tambo-comidas.svg'}
                                         alt={'categoria'}
                                         width={48}
                                         height={48}
