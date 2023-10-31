@@ -1,13 +1,15 @@
 'use client';
 
 import React, {FunctionComponent, useState} from "react";
-import {AppBar, Badge, Container, IconButton, Stack} from "@mui/material";
+import {AppBar, Badge, Button, Container, IconButton, Stack} from "@mui/material";
 
-import {Menu, ShoppingCart} from '@mui/icons-material';
+import {ShoppingCart} from '@mui/icons-material';
 import Image from "next/image";
 
 import logo from '@/../public/logo.svg';
 import logoStore from '@/../public/shops.png';
+import elige from '@/../public/elige.png';
+
 import Link from "next/link";
 import {useDataContext} from "@/global/DataProvider";
 import LateralMenu from "@/components/header/lateral-menu";
@@ -84,9 +86,9 @@ const Header: FunctionComponent = () => {
                         height={'4rem'}
                         alignItems={'center'}
                     >
-                        <IconButton onClick={toggleMenu}>
-                            <Menu/>
-                        </IconButton>
+                        <Button onClick={toggleMenu} variant={'text'} sx={{color: 'inherit'}}>
+                            <Image src={elige} alt={'Elige aquí'}/>
+                        </Button>
                         <Link href={'/'}>
                             <Stack direction={'row'} gap={'1rem'} alignItems={'center'}>
                                 <Image src={logoStore} alt={'logo ícono'} width={40}/>
