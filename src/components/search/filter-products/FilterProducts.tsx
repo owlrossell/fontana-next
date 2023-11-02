@@ -6,7 +6,7 @@ import {useRouter} from "next/navigation";
 const FilterProducts = () => {
     const {searchItem, setSearchItem} = useSearchContext();
     const router = useRouter();
-    const label = searchItem?.type === 'category' ? searchItem?.name : 'Producto único' || 'Producto único';
+    const label = searchItem?.type === 'category' ? searchItem?.name : searchItem?.type === 'query' ? `Búsqueda: ${searchItem?.name}` : 'Producto único';
     const handleDelete = () => {
         setSearchItem && setSearchItem(null);
         router.push('/');

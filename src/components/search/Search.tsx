@@ -53,7 +53,7 @@ const Search = () => {
     }, [searchItem]);
 
     useEffect(() => {
-        if(inputText.trim().length === 0 ){
+        if (inputText.trim().length === 0) {
             setSearchItem && setSearchItem(null);
         }
     }, [inputText]);
@@ -63,8 +63,6 @@ const Search = () => {
             setInputText(target.value);
             const closestMatches = fuse.search(target.value).map((result) => result.item).slice(0, 5);
             setSuggestedItems(closestMatches);
-            console.log(inputText)
-
         }
     }
 
@@ -82,6 +80,14 @@ const Search = () => {
         }
     }
 
+
+    const handleQuery = (query: string) => {
+        setInputText(query || '');
+        setSuggestedItems([]);
+        setSearchItem && setSearchItem({id: 0, name: query, type: 'query'});
+        router.push(`/`);
+    }
+
     return (
         <Container maxWidth={'sm'}
                    sx={{paddingTop: '1rem', paddingBottom: '1rem'}}>
@@ -92,6 +98,9 @@ const Search = () => {
                     fullWidth
                     value={inputText}
                     onChange={handleInputChange}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter' && inputText.trim().length > 0) handleQuery(inputText)
+                    }}
                     variant={'filled'}
                     autoComplete={'off'}
                     sx={{
@@ -126,7 +135,15 @@ const Search = () => {
                     }}
                     InputProps={{
                         endAdornment: (
-                            <InputAdornment position={'end'}>
+                            <InputAdornment
+                                position={'end'}
+                                onClick={() => {
+                                    if (inputText.trim().length > 0) handleQuery(inputText)
+                                }}
+                                sx={{
+                                    cursor: 'pointer',
+                                }}
+                            >
                                 <SearchRounded/>
                             </InputAdornment>
                         )
