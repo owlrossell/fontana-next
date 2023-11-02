@@ -4,7 +4,12 @@ const nextConfig = {
         API_URL: process.env.API_URL,
     },
     images: {
-        domains: ['metroio.vtexassets.com', 'plataforma-virtual.s3.us-west-2.amazonaws.com', 's3.amazonaws.com'],
+        domains: [
+            'metroio.vtexassets.com',
+            'plataforma-virtual.s3.us-west-2.amazonaws.com',
+            's3.amazonaws.com',
+            'devsolution-tablero.s3.us-west-2.amazonaws.com'
+        ],
     }
 }
 
