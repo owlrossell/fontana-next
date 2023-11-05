@@ -17,17 +17,17 @@ const SocialIcons = () => {
         <Stack position={'fixed'} bottom={0} bgcolor={'primary.main'} width={'100%'}
                justifyContent={'center'} height={'8rem'} alignItems={'center'} gap={'1rem'}>
             <Stack gap={'.5rem'} direction={'row'}>
-                <Link href={'https://www.facebook.com/BodegaLaFontana'} target={'_blank'}>
+                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
                     <IconButton sx={{color: 'rgb(8, 102, 255)'}}>
                         <FacebookOutlined sx={{fontSize: '2rem'}}/>
                     </IconButton>
                 </Link>
-                <Link href={'https://www.facebook.com/BodegaLaFontana'} target={'_blank'}>
+                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
                     <IconButton>
                         <Image src={twitterImage} alt={'twitter'}/>
                     </IconButton>
                 </Link>
-                <Link href={'https://www.facebook.com/BodegaLaFontana'} target={'_blank'}>
+                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
                     <IconButton>
                         <Image src={tiktokImage} alt={'twitter'}/>
                     </IconButton>
