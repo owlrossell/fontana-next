@@ -14,35 +14,8 @@ import Image from "next/image";
 
 const SocialIcons = () => {
     return (
-        <Stack position={'fixed'} bottom={0} bgcolor={'primary.main'} width={'100%'}
-               justifyContent={'center'} height={'8rem'} alignItems={'center'} gap={'1rem'}>
-            <Stack gap={'.5rem'} direction={'row'}>
-                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
-                    <IconButton sx={{color: 'rgb(8, 102, 255)'}}>
-                        <FacebookOutlined sx={{fontSize: '2rem'}}/>
-                    </IconButton>
-                </Link>
-                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
-                    <IconButton>
-                        <Image src={twitterImage} alt={'twitter'}/>
-                    </IconButton>
-                </Link>
-                <Link href={'https://www.facebook.com/lafontanamarketmatucana'} target={'_blank'}>
-                    <IconButton>
-                        <Image src={tiktokImage} alt={'twitter'}/>
-                    </IconButton>
-                </Link>
-                <Link href={'tel:+51935797813'} target={'_blank'}>
-                    <IconButton>
-                        <LocalPhone sx={{fontSize: '2rem'}}/>
-                    </IconButton>
-                </Link>
-                <Link href={'https://www.consumidor.gob.pe/libro-de-reclamaciones'} target={'_blank'}>
-                    <IconButton>
-                        <Image src={reclamacionesImage} alt={'Libro de reclamaciones'} height={32}/>
-                    </IconButton>
-                </Link>
-            </Stack>
+        <Stack bottom={0} bgcolor={'primary.main'} width={'100%'}
+               justifyContent={'center'} height={'4rem'} alignItems={'center'} gap={'1rem'}>
             <Stack direction={'row'} alignItems={'center'} gap={'.5rem'}>
                 <Typography color={'primary.contrastText'}>Paga con:</Typography>
                 <Image src={yapeImage} alt={'yape'} height={32}/>

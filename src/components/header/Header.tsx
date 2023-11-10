@@ -17,6 +17,7 @@ import {LateralMenuItem} from "@/components/header/lateral-menu/LateralMenuItem"
 import {stringToUrl} from "@/utils/stringManager";
 import {useCartContext} from "@/components/cart/CartProvider";
 import Cart from "@/components/cart";
+import FloatMenu from "@/components/float-menu";
 
 const Header: FunctionComponent = () => {
     const {categories} = useDataContext();
@@ -105,6 +106,7 @@ const Header: FunctionComponent = () => {
                             )}
                         </IconButton>
                     </Stack>
+                    <FloatMenu/>
                 </Container>
                 {/*<LateralMenu*/}
                 {/*    isActive={isMenuActive}*/}

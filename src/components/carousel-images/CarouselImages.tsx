@@ -73,7 +73,8 @@ const CarouselImages = () => {
     // }, [currentId]);
 
     return (
-        <Container sx={{position: 'relative'}}>
+        <Box sx={{position: 'relative'}}>
+            <>
             <Carousel onSelect={onSelect}>
                 {promotionalProducts.map((product) => {
                     const smallImage = product.photos[0]?.formatsPhotos.find(photo => photo.width === 600)?.src
@@ -114,7 +115,8 @@ const CarouselImages = () => {
             >
                 {isAdded ? 'Añadido' : 'Agregar'}
             </Button>
-        </Container>
+            </>
+        </Box>
     )
 }
 export default CarouselImages;
