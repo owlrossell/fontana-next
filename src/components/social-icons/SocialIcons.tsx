@@ -21,6 +21,7 @@ const SocialIcons = () => {
                 <Image src={yapeImage} alt={'yape'} height={32}/>
                 <Image src={plinImage} alt={'plin'} height={32}/>
                 <Image src={izipayImage} alt={'izipay'} height={24}/>
+                <Typography color={'primary.contrastText'}>Design by <a href="https://devsolutionsa.com/">Devsolutionsa</a></Typography>
             </Stack>
         </Stack>
     );
